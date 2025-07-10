@@ -48,13 +48,17 @@ The model follows the U-Net encoder–decoder layout but **rewires the feature f
 
 ---
 
-## 📦 Technologies Used
+## 🔧 Technologies Used
 
-- **PyTorch** – Model definition, training, evaluation  
-- **Selenium / BeautifulSoup** – (Used in earlier experiments, not this segmentation task)  
-- **FAISS** – (Used in GSP-based experiments for vector indexing)  
-- **Matplotlib** – Visualization of predictions  
-- **Superpixel Libraries** – (Optional) For graph signal processing phase
+| Component            | Library / Framework                    |
+|----------------------|-----------------------------------------|
+| Model + Training     | PyTorch                                 |
+| Image Processing     | PIL, Torchvision                        |
+| Visualization        | Matplotlib                              |
+| Progress Bar         | tqdm                                    |
+| Dataset Handling     | Custom Dataset class, DataLoader        |
+| Architecture Design  | Custom `SWUNet` with Dense Blocks       |
+
 
 ---
 
