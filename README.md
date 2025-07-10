@@ -1,81 +1,71 @@
-# 🌐 Small-World U-Net (SW-UNet) for Semantic Segmentation
+# 🌐 Small-World U-Net (SW-UNet): Small-World Networks in ML for Segmentation
 
-> **Novel Application of Small-World Topology in Deep Learning Architectures**  
-> Inspired by hierarchical graph blocks, this work proposes a unique integration of **Small-World Networks** into **U-Net** for satellite image segmentation.
-
-[![🧪 Try Demo Notebook](https://img.shields.io/badge/View-Notebook-blue?style=for-the-badge)](#)
+> **A Novel Exploration of Small-World Topologies in Machine Learning Architectures**  
+> Inspired by **hierarchical graph blocks**, this project introduces a **general-purpose use-case of Small-World Networks** in ML — with a focused application in image segmentation using a modified U-Net architecture.
 
 ---
 
-## 🧠 About the Project
+## 🧠 Project Overview
 
-This project explores **novel methods to integrate Small-World Network topologies** into machine learning architectures. We present a new segmentation model, **SW-UNet**, which leverages small-world connectivity to enhance information flow across layers.
+This repository presents our exploration of how **small-world connectivity**, a concept rooted in complex networks, can enhance various machine learning workflows.  
+We experimented with several architectural and representational approaches before discovering a **compelling use-case** in semantic segmentation.
 
-Our exploration includes:
-- Small-world based **graph signal processing** using **superpixels** for feature extraction  
-- Multiple architectural trials to bring small-world principles into ML  
-- A final successful realization through a **Small-World inspired skip connection topology** in a U-Net framework
-
----
-
-## 🧬 Key Features
-
-- ✅ U-Net backbone augmented with **probabilistically rewired connections**
-- 🌐 Small-world topology embedded through **additive and rewired** edge construction
-- 🔁 Skip connections are **not just local**; they include **long-range small-world edges**
-- 📈 Measured improvements in **Dice** and **IoU** metrics over baseline U-Net
-- 🧱 Built-in feature alignment using a **FeatureAligner** module for merging spatially mismatched feature maps
+Our journey involved:
+- 🧩 **Graph Signal Processing** using superpixels to extract meaningful features  
+- 🧠 Architecting a **Small-World-based feature aggregation pipeline**  
+- 🧱 Finally discovering a practical and scalable use-case by **infusing small-world topology into U-Net** — a breakthrough driven by inspiration from **hierarchical block designs**
 
 ---
 
-## 🔧 Technologies Used
+## 💡 Key Contributions
 
-| Component              | Library / Framework                        |
-|------------------------|---------------------------------------------|
-| Model Architecture     | PyTorch + Custom SW-UNet                   |
-| Graph Topology         | Small-World Networks (Watts-Strogatz inspired) |
-| Image Processing       | PIL, Torchvision                           |
-| Training Loop          | PyTorch, Dice + IoU Metrics                |
-| Dataset Handling       | Custom `SatelliteDataset` class           |
-| Visualization          | Matplotlib                                |
+- ✅ Demonstrated **small-world edge rewiring** to improve long-range context flow in CNNs  
+- 🔁 Explored **additive** and **rewired** variants of skip connections in deep architectures  
+- ⚡ Proved that **non-local graph-style connectivity** benefits spatial segmentation  
+- 📈 Achieved strong results on satellite image segmentation tasks using the proposed model
 
 ---
 
-## 📊 Metrics Used
+## 🔍 Methods Explored
 
-- **Dice Coefficient**
-- **Intersection over Union (IoU)**
-
----
-
-## 🧱 Architecture Overview
-
-The model uses a **Dense U-Net** backbone, where:
-- Each encoder, bottleneck, and decoder block is a **DenseBlock**
-- Skip connections are built via a **graph defined by small-world rewiring rules**
-- An intermediate **FeatureAligner** ensures spatial and channel-wise compatibility
-
-> 📌 The novelty lies in the design of these **graph-driven skip connections**, which are sampled using a **rewiring probability `p`** and embedded directly in the model's internal graph.
+| Approach | Description |
+|---------|-------------|
+| **Superpixel-based GSP** | Constructed graphs over superpixel regions and extracted visibility graph features |
+| **Additive Small-World Edges** | Introduced extra long-range skip connections between encoder–decoder layers |
+| **Rewired Small-World Edges** | Replaced original edges with probabilistically sampled graph edges |
+| **Feature Aggregation** | Used aligned and fused features from dynamically connected layers via `FeatureAligner` |
 
 ---
 
-## 🧪 Dataset Used
+## 🧪 Architecture: Small-World U-Net
 
-- Dataset: [Crack Segmentation Dataset](https://www.kaggle.com/datasets/arnavsmayan/crack-detection-dataset)  
-- Size: 3000 images  
-- Preprocessing: Resized to 256×256, converted to grayscale masks
+The model follows the U-Net encoder–decoder layout but **rewires the feature flow graph**:
+
+- 🔧 Skip connections follow a **graph topology** sampled from a **small-world distribution**
+- 🧱 Each node is a `DenseBlock`, creating high internal connectivity
+- 🔁 Long-range edges allow global information mixing at every layer
+- 🧠 A `FeatureAligner` module resizes and matches feature dimensions from different layers
 
 ---
 
-## 🏃‍♂️ How to Run
+## 📦 Technologies Used
 
-```bash
-# Clone the repository
-git clone https://github.com/your-username/sw-unet.git
-cd sw-unet
+- **PyTorch** – Model definition, training, evaluation  
+- **Selenium / BeautifulSoup** – (Used in earlier experiments, not this segmentation task)  
+- **FAISS** – (Used in GSP-based experiments for vector indexing)  
+- **Matplotlib** – Visualization of predictions  
+- **Superpixel Libraries** – (Optional) For graph signal processing phase
 
-# Install dependencies
-pip install -r requirements.txt
+---
 
-# Run training
-python Best.ipynb  # Or run the notebook in Jupyter/Lab/Colab
+## 📊 Evaluation Metrics
+
+- 🧪 **Dice Coefficient**  
+- 📉 **Intersection-over-Union (IoU)**  
+
+> Both metrics show significant improvement when using small-world connectivity compared to standard U-Net baselines.
+
+---
+
+## 📁 Repository Highlights
+
